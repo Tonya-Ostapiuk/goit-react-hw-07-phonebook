@@ -15,13 +15,11 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-// thunkAPI - об'єкт, який передається в асинхронний генератор екшену в redux-thunk. Містить властивості та методи доступу до стору, відправки екшенів, а також деякі додаткові.
-
 export const addContacts = createAsyncThunk(
     "contacts/addContact",
-      async (name, number, thunkAPI) => {
+      async (contact, thunkAPI) => {
         try {
-          const response = await axios.post("/contacts/contacts", { name, number });
+          const response = await axios.post("/contacts/contacts", contact);
           return response.data;
         } catch (e) {
           return thunkAPI.rejectWithValue(e.message);

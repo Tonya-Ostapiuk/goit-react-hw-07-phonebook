@@ -1,6 +1,3 @@
-const filtersInitialState = {
-
-    status: '',
-    
-  
-  }
+// export const filtersInitialState = {
+//     filter: '',
+//   }

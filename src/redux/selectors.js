@@ -1,13 +1,15 @@
-export const getTasks = state => state.contacts.items;
 
-export const getIsLoading = state => state.contacts.isLoading;
+export const selectStatus = state => state.contacts.status;
 
-export const getError = state => state.contacts.error;
+export const selectError = state => state.contacts.error;
 
-export const getFilter = state => state.filter;
+export const selectFilter = state => state.filter;
 
-export const getContact = state => {
-      return state.contacts.filter(({ name }) =>
-        name.toLowerCase().includes(state.filter.toLowerCase())
+export const selectContacts = state =>state.contacts.contacts.items;
+
+export const selectContact = state => {
+
+      return state.contacts.contacts.items.filter(({ name }) =>
+        name.toLowerCase().includes(state.contacts.filter.toLowerCase())
       );
     };
