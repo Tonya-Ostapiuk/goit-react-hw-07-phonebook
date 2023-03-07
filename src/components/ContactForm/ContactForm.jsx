@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/slice';
+import { addContacts } from '../../redux/contacts/contactThunk';
 import { FormStyled, LabelStyled, InputStyled, BtnStyled } from './ContactForm.styled';
 
 export const ContactForm = () => {
@@ -25,27 +25,6 @@ export const ContactForm = () => {
 
   const contacts = useSelector(state => state.contacts);
 
-  // const resetForm = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
-
-  // const handleSubmit = e => {
-  //   const id = nanoid();
-  //   const name = e.name;
-  //   const number = e.number;
-  //   const contactsLists = [...contacts];
-
-  //   if (contactsLists.findIndex(contact => name === contact.name) !== -1) {
-  //     alert(`${name} is already in contacts.`);
-  //   } else {
-  //     contactsLists.push({ name, id, number} );
-  //   }
-  //   dispatch(addContact({contactsLists}));
-  //   // setContacts( contactsLists );
-  // };
-
-
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -57,7 +36,7 @@ export const ContactForm = () => {
 
     findContact
       ? alert(`${newContact.name} is already in contacts`)
-      : dispatch(addContact(newContact));
+      : dispatch(addContacts(newContact));
       setName('');
       setNumber('');
   };
